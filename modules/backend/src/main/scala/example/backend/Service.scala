@@ -19,7 +19,7 @@ object ServiceImpl extends Service {
     "This",
     "That",
     "maybe this",
-    "maybe that", 
+    "maybe that",
     "another",
     "suggestion"
   )
@@ -31,11 +31,7 @@ object ServiceImpl extends Service {
 
     request match {
       case Request(search, Some(false) | None) =>
-        IO.pure(
-          Response(
-            things.filter(_.contains(search))
-            )
-        )
+        IO.pure(Response(things.filter(_.contains(search))))
       case Request(search, Some(true)) =>
         IO.pure(Response(things.filter(_.startsWith(search))))
     }
