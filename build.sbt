@@ -3,7 +3,7 @@ val V = new {
   val ScalaGroup = "2.13"
 
   val cats             = "2.4.1"
-  val laminar          = "0.11.0"
+  val laminar          = "0.12.2"
   val http4s           = "0.21.19"
   val sttp             = "2.2.9"
   val circe            = "0.13.0"
@@ -12,6 +12,8 @@ val V = new {
   val betterMonadicFor = "0.3.1"
   val weaver           = "0.6.0-M6"
 }
+
+scalaVersion := V.Scala
 
 val Dependencies = new {
   private val http4sModules =
