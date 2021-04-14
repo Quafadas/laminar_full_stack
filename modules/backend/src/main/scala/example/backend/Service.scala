@@ -19,7 +19,9 @@ object ServiceImpl extends Service {
     "This",
     "That",
     "maybe this",
-    "maybe that"
+    "maybe that",
+    "another",
+    "suggestion"
   )
 
   def getSuggestions(
