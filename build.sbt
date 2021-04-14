@@ -62,7 +62,7 @@ lazy val frontend = (project in file("modules/frontend"))
   .settings(
     Dependencies.frontend,
     Dependencies.tests,
-    jsEnv / Test := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
+    Test / jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
   )
   .settings(commonBuildSettings)
 
@@ -74,16 +74,16 @@ lazy val backend = (project in file("modules/backend"))
   .enablePlugins(JavaAppPackaging)
   .enablePlugins(DockerPlugin)
   .settings(
-    fork / Test := true,
-    mappings / Universal += {
+    Test / fork := true,
+    Universal / mappings += {
       val appJs = (frontend / Compile / fullOptJS).value.data
       appJs -> ("lib/prod.js")
     },
-    javaOptions / Universal ++= Seq(
+    Universal  / javaOptions ++= Seq(
       "--port 8080",
       "--mode prod"
     ),
-    packageName / Docker := "laminar-http4s-example"
+     Docker / packageName := "laminar-http4s-example"
   )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
